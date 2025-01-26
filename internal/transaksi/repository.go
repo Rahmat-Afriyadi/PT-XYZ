@@ -36,11 +36,16 @@ func (lR *transaksiRepository) DetailTransaksi(nik string) entity.Transaksi {
 func (lR *transaksiRepository) CreateTransaksi(data TransaksiRequest) error {
 	consumer := entity.Konsumen{Nik: data.Nik}
 	var wg sync.WaitGroup
+	errorRes := make(chan error)
 	for _, txn := range data.Transaksi {
 		wg.Add(1)
 		go func(transaksi entity.Transaksi) {
 			defer wg.Done()
-
+			asset := entity.Asset{ID: txn.AssetId}
+			lR.conn.Preload("Platform").Find(&asset)
+			if asset.NamaAsset == "" {
+				errorRes <- errors.New("asset is not found")
+			}
 			err := lR.conn.Transaction(func(tx *gorm.DB) error {
 				// Ambil consumer dari database
 				var c entity.Konsumen
@@ -49,18 +54,25 @@ func (lR *transaksiRepository) CreateTransaksi(data TransaksiRequest) error {
 				}
 
 				// Apply loan
-				return c.ApplyLoan(tx, transaksi.Tenor, transaksi.Otr)
+				return c.ApplyLoan(tx, transaksi.Tenor, asset.Otr)
 			})
 
 			if err != nil {
-				fmt.Printf("Transaction failed: %v\n", err)
+				errorRes <- err
 
 			} else {
 				transaksi.KonsumenNik = consumer.Nik
+				transaksi.NamaAsset = asset.NamaAsset
+				transaksi.AdminFee = asset.Platform.AdminFee
+				transaksi.JumlahBunga = asset.Platform.Bunga
+				transaksi.Otr = float64(asset.Otr)
 				lR.conn.Save(&transaksi)
 				fmt.Printf("Transaction successful: Tenor %d, Amount %.2f\n", transaksi.Tenor, transaksi.Otr)
 			}
 		}( txn)
+	}
+	if <-errorRes != nil {
+		return <-errorRes
 	}
 	return nil
 
