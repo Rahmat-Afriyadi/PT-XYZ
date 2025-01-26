@@ -1,0 +1,620 @@
+{
+	"info": {
+		"_postman_id": "226bd3a6-d04a-4f1f-9d06-c56b7c56e7c5",
+		"name": "xyz",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16771974"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('save access_token', () => {\r",
+									"    const responseJson = pm.response.json();\r",
+									"    const { access_token } = responseJson;\r",
+									"\r",
+									"    pm.expect(access_token).to.not.equals('');\r",
+									"    pm.environment.set('bearer_token', access_token);\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nik\":\"3173070203031001\",\r\n    \"password\":\"gusti\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Berhasil",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nik\":\"31730702030310011\",\r\n    \"password\":\"gusti\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/auth/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 26 Jan 2025 14:00:47 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "760"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "access_token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mzc5MDA5NDcsImlhdCI6MTczNzkwMDA0NywibmJmIjoxNzM3OTAwMDQ3LCJzdWIiOiIwZjJhMWM0Mi1hOGZlLTQ3YWYtYmExZS1iZjkwYThjMDRkODIifQ.Jk0wEYxQvlLZjjrmcmWhzoVow89KzyL_M0ca5t23FRLF12UJU1vWnqihGcjPNLUZVulj8R2A2ROVz513iYdkEzmdIFMWXxLhEUXoFCZsToF_xFVm4Lwm0CZdopqxN727vPVNKbA7AFjGvtnt8eqAOHRWYf_u5RdSHs3PRQYyt0o; max-age=900; path=/; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "refresh_token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mzc5NTQwNDcsImlhdCI6MTczNzkwMDA0NywibmJmIjoxNzM3OTAwMDQ3LCJzdWIiOiIwZjJhMWM0Mi1hOGZlLTQ3YWYtYmExZS1iZjkwYThjMDRkODIifQ.AsNZNQJJ7HV-fhoap5YbI5s1YGTYpQ4QWH4XB8uNl3ygKc7J076LW4RCmB_8oi_iaUBnqvGy10fJzWTqmiu3iul06r5CSQ7VJ-PyssYPSml5CSJPuXJOGWRf7b88F1kLSSy_Mf1Ja64pFKuynpDe1LE1t8E-1i-9G8iJut4iQl0; max-age=3600; path=/; HttpOnly; SameSite=Lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mzc5MDA5NDcsImlhdCI6MTczNzkwMDA0NywibmJmIjoxNzM3OTAwMDQ3LCJzdWIiOiIwZjJhMWM0Mi1hOGZlLTQ3YWYtYmExZS1iZjkwYThjMDRkODIifQ.Jk0wEYxQvlLZjjrmcmWhzoVow89KzyL_M0ca5t23FRLF12UJU1vWnqihGcjPNLUZVulj8R2A2ROVz513iYdkEzmdIFMWXxLhEUXoFCZsToF_xFVm4Lwm0CZdopqxN727vPVNKbA7AFjGvtnt8eqAOHRWYf_u5RdSHs3PRQYyt0o\",\n    \"name\": \"Rahmat Afriyadi\",\n    \"refresh_token\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mzc5NTQwNDcsImlhdCI6MTczNzkwMDA0NywibmJmIjoxNzM3OTAwMDQ3LCJzdWIiOiIwZjJhMWM0Mi1hOGZlLTQ3YWYtYmExZS1iZjkwYThjMDRkODIifQ.AsNZNQJJ7HV-fhoap5YbI5s1YGTYpQ4QWH4XB8uNl3ygKc7J076LW4RCmB_8oi_iaUBnqvGy10fJzWTqmiu3iul06r5CSQ7VJ-PyssYPSml5CSJPuXJOGWRf7b88F1kLSSy_Mf1Ja64pFKuynpDe1LE1t8E-1i-9G8iJut4iQl0\",\n    \"status\": \"success\"\n}"
+						},
+						{
+							"name": "Gagal salah NIK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nik\":\"31730702030310010101\",\r\n    \"password\":\"gusti\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/auth/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Bad Gateway",
+							"code": 502,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 26 Jan 2025 14:02:08 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "53"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Invalid nik or password\",\n    \"status\": \"fail\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "konsumen",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nik\":\"3173070203031001\",\r\n    \"full_name\":\"Melly Anastasya\",\r\n    \"legal_name\":\"Melly Anastasya\",\r\n    \"tempat_lahir\":\"Jakarta\",\r\n    \"tgl_lahir\":\"2005-05-05\",\r\n    \"foto_ktp\":\"\",\r\n    \"foto_selfie\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/konsumen/create-konsumen",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"konsumen",
+								"create-konsumen"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Berhasil",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nik\":\"31730702030310011\",\r\n    \"password\":\"gusti\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/auth/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 26 Jan 2025 14:00:47 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "760"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "access_token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mzc5MDA5NDcsImlhdCI6MTczNzkwMDA0NywibmJmIjoxNzM3OTAwMDQ3LCJzdWIiOiIwZjJhMWM0Mi1hOGZlLTQ3YWYtYmExZS1iZjkwYThjMDRkODIifQ.Jk0wEYxQvlLZjjrmcmWhzoVow89KzyL_M0ca5t23FRLF12UJU1vWnqihGcjPNLUZVulj8R2A2ROVz513iYdkEzmdIFMWXxLhEUXoFCZsToF_xFVm4Lwm0CZdopqxN727vPVNKbA7AFjGvtnt8eqAOHRWYf_u5RdSHs3PRQYyt0o; max-age=900; path=/; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "refresh_token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mzc5NTQwNDcsImlhdCI6MTczNzkwMDA0NywibmJmIjoxNzM3OTAwMDQ3LCJzdWIiOiIwZjJhMWM0Mi1hOGZlLTQ3YWYtYmExZS1iZjkwYThjMDRkODIifQ.AsNZNQJJ7HV-fhoap5YbI5s1YGTYpQ4QWH4XB8uNl3ygKc7J076LW4RCmB_8oi_iaUBnqvGy10fJzWTqmiu3iul06r5CSQ7VJ-PyssYPSml5CSJPuXJOGWRf7b88F1kLSSy_Mf1Ja64pFKuynpDe1LE1t8E-1i-9G8iJut4iQl0; max-age=3600; path=/; HttpOnly; SameSite=Lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mzc5MDA5NDcsImlhdCI6MTczNzkwMDA0NywibmJmIjoxNzM3OTAwMDQ3LCJzdWIiOiIwZjJhMWM0Mi1hOGZlLTQ3YWYtYmExZS1iZjkwYThjMDRkODIifQ.Jk0wEYxQvlLZjjrmcmWhzoVow89KzyL_M0ca5t23FRLF12UJU1vWnqihGcjPNLUZVulj8R2A2ROVz513iYdkEzmdIFMWXxLhEUXoFCZsToF_xFVm4Lwm0CZdopqxN727vPVNKbA7AFjGvtnt8eqAOHRWYf_u5RdSHs3PRQYyt0o\",\n    \"name\": \"Rahmat Afriyadi\",\n    \"refresh_token\": \"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3Mzc5NTQwNDcsImlhdCI6MTczNzkwMDA0NywibmJmIjoxNzM3OTAwMDQ3LCJzdWIiOiIwZjJhMWM0Mi1hOGZlLTQ3YWYtYmExZS1iZjkwYThjMDRkODIifQ.AsNZNQJJ7HV-fhoap5YbI5s1YGTYpQ4QWH4XB8uNl3ygKc7J076LW4RCmB_8oi_iaUBnqvGy10fJzWTqmiu3iul06r5CSQ7VJ-PyssYPSml5CSJPuXJOGWRf7b88F1kLSSy_Mf1Ja64pFKuynpDe1LE1t8E-1i-9G8iJut4iQl0\",\n    \"status\": \"success\"\n}"
+						},
+						{
+							"name": "Gagal salah NIK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nik\":\"31730702030310010101\",\r\n    \"password\":\"gusti\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/auth/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Bad Gateway",
+							"code": 502,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 26 Jan 2025 14:02:08 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "53"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Invalid nik or password\",\n    \"status\": \"fail\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Upload KTP",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/D:/Administrator/Downloads/WhatsApp Image 2025-01-26 at 21.33.48 (1).jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/konsumen/upload-ktp",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"konsumen",
+								"upload-ktp"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Upload KTP",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/D:/Administrator/Downloads/WhatsApp Image 2025-01-26 at 21.33.48 (1).jpeg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/konsumen/upload-ktp",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"konsumen",
+										"upload-ktp"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 26 Jan 2025 15:44:14 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "87"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": \"/uploads/WhatsApp Image 2025-01-26 at 21.33.48 (1).jpeg\",\n    \"message\": \"Berhasil\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get All Konsumen",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/konsumen/master-data/all",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"konsumen",
+								"master-data",
+								"all"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get All Konsumen",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/konsumen/master-data/all",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"konsumen",
+										"master-data",
+										"all"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 26 Jan 2025 15:43:06 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "348"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"nik\": \"3173070203031001\",\n            \"full_name\": \"Melly Anastasya\",\n            \"legal_name\": \"Melly Anastasya\",\n            \"tempat_lahir\": \"Jakarta\",\n            \"tgl_lahir\": \"2005-05-05T00:00:00+07:00\",\n            \"foto_ktp\": \"\",\n            \"foto_selfie\": \"\",\n            \"limit\": null,\n            \"created_by\": \"\",\n            \"updated_by\": \"\",\n            \"created_at\": \"2025-01-26T21:23:46.921+07:00\",\n            \"updated_at\": \"2025-01-26T21:23:46.936+07:00\"\n        }\n    ],\n    \"status\": \"success\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "transaksi",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bearer_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"transaksi\": [\r\n        {\r\n            \"asset_id\": \"ac058b1e-82b4-4521-9ceb-73adb2e30c04\",\r\n            \"jumlah_cicilan\": 1\r\n            \r\n        },\r\n        {\r\n            \"asset_id\": \"8f1d2e76-64de-4f13-8571-d6f314b29d9b\",\r\n            \"jumlah_cicilan\": 1\r\n            \r\n        },\r\n        {\r\n            \"asset_id\": \"17b28329-b593-461c-947d-000943457261\",\r\n            \"jumlah_cicilan\": 1\r\n            \r\n        }\r\n        \r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/transaksi/create-transaksi",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"transaksi",
+								"create-transaksi"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"transaksi\": [\r\n        {\r\n            \"asset_id\": \"ac058b1e-82b4-4521-9ceb-73adb2e30c04\",\r\n            \"jumlah_cicilan\": 1\r\n            \r\n        },\r\n        {\r\n            \"asset_id\": \"8f1d2e76-64de-4f13-8571-d6f314b29d9b\",\r\n            \"jumlah_cicilan\": 1\r\n            \r\n        },\r\n        {\r\n            \"asset_id\": \"17b28329-b593-461c-947d-000943457261\",\r\n            \"jumlah_cicilan\": 1\r\n            \r\n        }\r\n        \r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/transaksi/create-transaksi",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transaksi",
+										"create-transaksi"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 26 Jan 2025 15:24:49 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "29"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Berhasil create\"\n}"
+						},
+						{
+							"name": "error limit",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"transaksi\": [\r\n        {\r\n            \"asset_id\": \"ac058b1e-82b4-4521-9ceb-73adb2e30c04\",\r\n            \"jumlah_cicilan\": 1\r\n            \r\n        },\r\n        {\r\n            \"asset_id\": \"8f1d2e76-64de-4f13-8571-d6f314b29d9b\",\r\n            \"jumlah_cicilan\": 1\r\n            \r\n        },\r\n        {\r\n            \"asset_id\": \"17b28329-b593-461c-947d-000943457261\",\r\n            \"jumlah_cicilan\": 1\r\n            \r\n        }\r\n        \r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/transaksi/create-transaksi",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"transaksi",
+										"create-transaksi"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 26 Jan 2025 23:47:24 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "44"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"insufficient limit for tenor 1\"\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
