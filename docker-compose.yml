@@ -1,0 +1,40 @@
+version: "3.3"
+
+services:
+  xyz:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mswkm
+    ports:
+      - 3003:3003
+    env_file:
+      - .env
+    environment:
+      - PORT=3003
+      - DB_USER=root2
+      - DB_PASS=root2
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_NAME=xyz
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8.0
+    container_name: my-mysql-container
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root2
+      MYSQL_DATABASE: xyz
+      MYSQL_USER: root2
+      MYSQL_PASSWORD: root2
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database:/docker-entrypoint-initdb.d # Mount the init script directory
+
+volumes:
+  mysql_data:
